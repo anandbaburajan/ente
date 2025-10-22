@@ -9,7 +9,7 @@ on:
     workflow_dispatch:
         inputs:
             source:
-                description: "Branch (ente-io/ente) to build"
+                description: "Branch (anandbaburajan/ente) to build"
                 type: string
     schedule:
         # Run every weekday at ~8:00 AM IST.
@@ -43,7 +43,7 @@ jobs:
               with:
                   # If triggered by a tag, checkout photosd-$tag from the source
                   # repository. Otherwise checkout $source (default: "main").
-                  repository: ente-io/ente
+                  repository: anandbaburajan/ente
                   ref: "${{ startsWith(github.ref, 'refs/tags/v') &&
                       format('photosd-{0}', github.ref_name) || ( inputs.source
                       || 'main' ) }}"
