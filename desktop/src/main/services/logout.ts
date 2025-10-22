@@ -10,7 +10,6 @@ import { clearOpenZipCache } from "./zip";
  * Perform the native side logout sequence.
  *
  * This function is guaranteed not to throw any errors.
- *
  * See: [Note: Do not throw during logout].
  */
 export const logout = (watcher: FSWatcher) => {
