@@ -1,0 +1,8 @@
+# Cloudflare Pages configuration for share app
+#
+# Serve 404.html for all unmatched routes with 200 status code
+# This enables:
+# - Social media crawlers to process Open Graph tags (require 200 status)
+# - Share links (/:token#key format) work with proper status code
+# - Preserves URL in browser for token/key extraction
+/* /404.html 200

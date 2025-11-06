@@ -3,16 +3,14 @@ import React from "react";
 import { FileShareView } from "../components/file-share/FileShareView";
 
 /**
- * 404 page that handles all share links with the format:
- * /4MzPEanZK8#FvDZiMigvQ8Qwh813CFUL1E2szXovnxwNoViEUpdfngE
+ * 404 page that handles all share links
  *
- * This page is served by static hosts (Cloudflare Pages, self-hosted servers)
- * when no matching file exists for a path. The token is extracted from the
- * pathname and the key from the hash fragment.
+ * Share links use the format /token#key (e.g., /tcGFnaEuXf#key...)
  *
- * This approach works without server configuration files (_redirects, etc.)
- * because static hosts automatically serve 404.html for unmatched routes
- * while preserving the URL in the browser.
+ * This approach works because:
+ * - Next.js dev server automatically serves this for unknown routes
+ * - Static export generates 404.html
+ * - _redirects (Cloudflare) and nginx serve 404.html with 200 status in production
  */
 const NotFoundPage: React.FC = () => {
     return (
