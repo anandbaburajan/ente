@@ -1,6 +1,10 @@
 {
     "workspaces": {
         "apps/*": { "next": true },
-        "apps/payments": { "next": false }
+        "apps/payments": { "next": false },
+        "e2e": {
+            "entry": ["playwright.config.ts", "*.spec.ts"],
+            "playwright": false
+        }
     }
 }

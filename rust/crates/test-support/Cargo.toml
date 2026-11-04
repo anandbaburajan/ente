@@ -12,5 +12,9 @@ postgresql_embedded = { version = "0.20.4", default-features = false, features =
 tokio = { workspace = true, features = ["rt-multi-thread"] }
 uuid = { workspace = true, features = ["v4"] }
 
+[dev-dependencies]
+serde.workspace = true
+serde_json.workspace = true
+
 [lints]
 workspace = true

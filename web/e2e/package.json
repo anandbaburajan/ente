@@ -1,0 +1,12 @@
+{
+    "name": "ente-web-e2e",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "devDependencies": {
+        "@playwright/test": "1.64.1",
+        "@types/node": "24.19.2",
+        "ente-build-config": "*",
+        "serve": "14.2.6"
+    }
+}
