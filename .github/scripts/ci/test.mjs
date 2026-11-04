@@ -50,6 +50,7 @@ test("shared build inputs select their consumers", (t) => {
         "rust-cli-test",
         "rust-lint",
         "rust-test",
+        "web-e2e",
         "web-lint",
     ]);
     assert.ok(select(t, ["server/pkg/api.go"]).includes("rust-test"));
@@ -104,12 +105,37 @@ test("path filters cover root files, nested files, and dotfiles", (t) => {
 
 test("deletions and moves select every affected area", (t) => {
     const before = ["web/shared.txt"];
-    assert.deepEqual(select(t, [], before), ["repo-lint", "web-lint"]);
+    assert.deepEqual(select(t, [], before), [
+        "repo-lint",
+        "web-e2e",
+        "web-lint",
+    ]);
     assert.deepEqual(select(t, ["desktop/shared.txt"], before), [
         "desktop-lint",
         "repo-lint",
+        "web-e2e",
         "web-lint",
     ]);
+});
+
+test("web E2E follows browser, server, and Rust test dependencies", (t) => {
+    for (const file of [
+        "web/apps/photos/src/pages/gallery.tsx",
+        "web/apps/albums/src/pages/index.tsx",
+        "web/apps/photobook/src/pages/app.tsx",
+        "web/e2e/photos.spec.ts",
+        "server/pkg/api/file.go",
+        "rust/crates/test-support/src/museum.rs",
+        "rust/bindings/wasm/prelogin/src/lib.rs",
+        "rust/bindings/wasm/photobook/src/lib.rs",
+        "rust/crates/photobook/src/lib.rs",
+    ]) {
+        assert.ok(select(t, [file]).includes("web-e2e"), file);
+    }
+    const selected = ["repo-lint", "web-e2e"];
+    const needs = results(selected);
+    needs["web-e2e"].result = "failure";
+    checkResult(needs, /web-e2e: expected success, got failure/);
 });
 
 test("changes to CI selection or wiring run every workflow", (t) => {

@@ -1,0 +1,6 @@
+{
+    "extends": "ente-build-config/tsconfig-typecheck.json",
+    "compilerOptions": { "types": ["node"] },
+    "include": ["."],
+    "exclude": ["playwright-report", "test-results"]
+}

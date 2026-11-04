@@ -47,6 +47,7 @@ import type { EnteFile } from "ente-media/file";
 import {
     fileCreationPhotoDate,
     fileDurationString,
+    fileFileName,
 } from "ente-media/file-metadata";
 import { FileType } from "ente-media/file-type";
 import {
@@ -1228,7 +1229,7 @@ const FileThumbnail: React.FC<FileThumbnailProps> = ({
             {file.metadata.hasStaticThumbnail ? (
                 <StaticThumbnail fileType={file.metadata.fileType} />
             ) : imageURL ? (
-                <img src={imageURL} />
+                <img src={imageURL} alt={fileFileName(file)} />
             ) : (
                 <LoadingThumbnail />
             )}

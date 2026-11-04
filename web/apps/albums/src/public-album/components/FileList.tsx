@@ -12,7 +12,7 @@ import { Box, Button, Checkbox, Typography, styled } from "@mui/material";
 import { Overlay } from "ente-base/components/containers";
 import log from "ente-base/log";
 import type { EnteFile } from "ente-media/file";
-import { fileDurationString } from "ente-media/file-metadata";
+import { fileDurationString, fileFileName } from "ente-media/file-metadata";
 import { FileType } from "ente-media/file-type";
 import {
     LoadingThumbnail,
@@ -1222,7 +1222,7 @@ const FileThumbnail: React.FC<FileThumbnailProps> = ({
             {file.metadata.hasStaticThumbnail ? (
                 <StaticThumbnail fileType={file.metadata.fileType} />
             ) : imageURL ? (
-                <img src={imageURL} />
+                <img src={imageURL} alt={fileFileName(file)} />
             ) : (
                 <LoadingThumbnail />
             )}

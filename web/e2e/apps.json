@@ -1,0 +1,5 @@
+{
+    "albums": { "dependencies": ["photos"], "museum_key": "public-albums" },
+    "photobook": { "dependencies": ["photos"], "museum_key": "photobook" },
+    "photos": { "dependencies": [] }
+}
